@@ -27,11 +27,11 @@
 #define COLOR			"#b6c4d7"
 #define BORDER			6
 
-#define	SHUTDOWN_CANCEL		-1
-#define	SHUTDOWN_LOGOUT		0
-#define SHUTDOWN_HIBERNATE	1
-#define SHUTDOWN_REBOOT		2
-#define SHUTDOWN_HALT		3
+#define	SHUTDOWN_CANCEL		0
+#define	SHUTDOWN_LOGOUT		1
+#define SHUTDOWN_HIBERNATE	2
+#define SHUTDOWN_REBOOT		3
+#define SHUTDOWN_HALT		4
 
 #define LOGOUT_CMD    "i3-msg exit"
 #define HIBERNATE_CMD   "systemctl hibernate"
