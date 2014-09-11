@@ -33,7 +33,7 @@
 #define SHUTDOWN_REBOOT		2
 #define SHUTDOWN_HALT		3
 
-#define LOGOUT_CMD    "/usr/bin/openbox --exit"
+#define LOGOUT_CMD    "i3-msg exit"
 #define HIBERNATE_CMD   "systemctl hibernate"
 #define REBOOT_CMD   "systemctl reboot"
 #define POWEROFF_CMD  "systemctl poweroff"
