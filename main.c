@@ -19,8 +19,8 @@
 #include "reboot.h"
 #include "hibernate.h"
 
-#define PACKAGE "exitx" //软件包名
-#define LOCALEDIR "/usr/share/locale" //locale所在目录
+#define PACKAGE "exitx"
+#define LOCALEDIR "/usr/share/locale"
 //#define _(string)   gettext(string)
 //#define N_(string)  string
 
@@ -321,9 +321,7 @@ gboolean main(int argc, char **argv)
 	gtk_init(&argc, &argv);
 
     bindtextdomain(PACKAGE, LOCALEDIR);
-    //以上函数用来设定国际化翻译包所在位置
     textdomain(PACKAGE);
-    //      //以上函数用来设定国际化翻译包名称，省略了.mo
 	/* get screen with pointer */
 	screen = xfce_gdk_display_locate_monitor_with_pointer(NULL, &monitor);
 	if (screen == NULL) {
@@ -376,7 +374,6 @@ gboolean main(int argc, char **argv)
 
 	/* - -------------------------------- - */
 	/* label */
-	//label = gtk_label_new("<b><big>退出系统</big></b>");
 	label = gtk_label_new(_("<b><big>Exit System</big></b>"));
 	gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
 	gtk_widget_show(label);
@@ -406,7 +403,6 @@ gboolean main(int argc, char **argv)
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	//label = gtk_label_new("退出");
 	label = gtk_label_new(_("Exit"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
@@ -429,7 +425,6 @@ gboolean main(int argc, char **argv)
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	//label = gtk_label_new("待机");
 	label = gtk_label_new(_("Hibernate"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
@@ -452,7 +447,6 @@ gboolean main(int argc, char **argv)
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	//label = gtk_label_new("重启");
 	label = gtk_label_new(_("Reboot"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
@@ -475,7 +469,6 @@ gboolean main(int argc, char **argv)
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	//label = gtk_label_new("关机");
 	label = gtk_label_new(_("Poweroff"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
@@ -497,7 +490,6 @@ gboolean main(int argc, char **argv)
 	gtk_widget_show(vbox2);
 	gtk_box_pack_start(GTK_BOX(hbox), vbox2, TRUE, TRUE, 0);
 
-	//cancel_button = gtk_button_new_with_label("取消");
 	cancel_button = gtk_button_new_with_label(_("Cancel"));
 	g_signal_connect(cancel_button, "clicked", G_CALLBACK(cancel_button_clicked), &shutdownType);
 	gtk_widget_show(cancel_button);
@@ -559,4 +551,3 @@ gboolean main(int argc, char **argv)
 	return (result == GTK_RESPONSE_OK);
 }
 
-// vim:encoding=utf8
