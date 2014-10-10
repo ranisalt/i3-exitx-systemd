@@ -21,8 +21,6 @@
 
 #define PACKAGE "exitx"
 #define LOCALEDIR "/usr/share/locale"
-//#define _(string)   gettext(string)
-//#define N_(string)  string
 
 #define COLOR			"#b6c4d7"
 #define BORDER			6
