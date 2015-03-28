@@ -1,5 +1,5 @@
 all:exitx exitx.po
-exitx: main.c halt.h hibernate.h logout.h reboot.h
+exitx: main.c halt.h logout.h reboot.h suspend.h
 	gcc -O2 -Wall -o exitx main.c `pkg-config gtk+-2.0 --cflags` `pkg-config gtk+-2.0 --libs` `pkg-config --cflags --libs glib-2.0` `pkg-config x11 --libs` 
 
 indent: main.c

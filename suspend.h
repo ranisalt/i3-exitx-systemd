@@ -1,6 +1,6 @@
 /* GdkPixbuf RGBA C-Source image dump 1-byte-run-length-encoded */
 
-static const GdkPixdata hibernate_pixbuf = {
+static const GdkPixdata suspend_pixbuf = {
   0x47646b50, /* Pixbuf magic: 'GdkP' */
   24 + 8474, /* header length + pixel_data length */
   0x2010002, /* pixdata_type */

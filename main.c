@@ -17,7 +17,7 @@
 #include "halt.h"
 #include "logout.h"
 #include "reboot.h"
-#include "hibernate.h"
+#include "suspend.h"
 
 #define PACKAGE "exitx"
 #define LOCALEDIR "/usr/share/locale"
@@ -27,12 +27,12 @@
 
 #define	SHUTDOWN_CANCEL		0
 #define	SHUTDOWN_LOGOUT		1
-#define SHUTDOWN_HIBERNATE	2
+#define SHUTDOWN_SUSPEND	2
 #define SHUTDOWN_REBOOT		3
 #define SHUTDOWN_HALT		4
 
 #define LOGOUT_CMD    "i3-msg exit"
-#define HIBERNATE_CMD   "systemctl hibernate"
+#define SUSPEND_CMD   "systemctl suspend"
 #define REBOOT_CMD   "systemctl reboot"
 #define POWEROFF_CMD  "systemctl poweroff"
 
@@ -152,9 +152,9 @@ static void logout_button_clicked(GtkWidget * b, gint * shutdownType)
 	gtk_dialog_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 }
 
-static void hibernate_button_clicked(GtkWidget * b, gint * shutdownType)
+static void suspend_button_clicked(GtkWidget * b, gint * shutdownType)
 {
-	*shutdownType = SHUTDOWN_HIBERNATE;
+	*shutdownType = SHUTDOWN_SUSPEND;
 	gtk_dialog_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 }
 
@@ -307,7 +307,7 @@ gboolean main(int argc, char **argv)
 	GtkWidget *hidden;
 	GtkWidget *label;
 	GtkWidget *logout_button;
-	GtkWidget *hibernate_button;
+	GtkWidget *suspend_button;
 	GtkWidget *reboot_button;
 	GtkWidget *halt_button;
 	GtkWidget *cancel_button;
@@ -405,25 +405,25 @@ gboolean main(int argc, char **argv)
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
 
-	/* hibernate */
-	hibernate_button = gtk_button_new();
-	gtk_widget_show(hibernate_button);
-	gtk_box_pack_start(GTK_BOX(hbox), hibernate_button, TRUE, TRUE, 0);
+	/* suspend */
+	suspend_button = gtk_button_new();
+	gtk_widget_show(suspend_button);
+	gtk_box_pack_start(GTK_BOX(hbox), suspend_button, TRUE, TRUE, 0);
 
-	g_signal_connect(hibernate_button, "clicked", G_CALLBACK(hibernate_button_clicked), &shutdownType);
+	g_signal_connect(suspend_button, "clicked", G_CALLBACK(suspend_button_clicked), &shutdownType);
 
 	vbox2 = gtk_vbox_new(FALSE, BORDER);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox2), BORDER);
 	gtk_widget_show(vbox2);
-	gtk_container_add(GTK_CONTAINER(hibernate_button), vbox2);
+	gtk_container_add(GTK_CONTAINER(suspend_button), vbox2);
 
-	icon = gdk_pixbuf_from_pixdata(&hibernate_pixbuf, FALSE, NULL);
+	icon = gdk_pixbuf_from_pixdata(&suspend_pixbuf, FALSE, NULL);
 	image = gtk_image_new_from_pixbuf(icon);
 	gtk_widget_show(image);
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	label = gtk_label_new(_("Hibernate"));
+	label = gtk_label_new(_("suspend"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
 
@@ -534,8 +534,8 @@ gboolean main(int argc, char **argv)
 	case SHUTDOWN_LOGOUT:
 		system(LOGOUT_CMD);
 		break;
-	case SHUTDOWN_HIBERNATE:
-		system(HIBERNATE_CMD);
+	case SHUTDOWN_SUSPEND:
+		system(SUSPEND_CMD);
 		break;
 	case SHUTDOWN_REBOOT:
 		system(REBOOT_CMD);
