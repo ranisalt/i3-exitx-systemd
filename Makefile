@@ -1,6 +1,8 @@
 all:exitx exitx.po
 exitx: main.c halt.h logout.h reboot.h suspend.h
 	gcc -O2 -Wall -o exitx main.c `pkg-config gtk+-2.0 --cflags` `pkg-config gtk+-2.0 --libs` `pkg-config --cflags --libs glib-2.0` `pkg-config x11 --libs` 
+install: exitx
+	install exitx "$(DESTDIR)/usr/bin/exitx"
 
 indent: main.c
 	indent -npro -kr -i8 -ts8 -sob -l120 -ss -ncs -cp1 main.c
