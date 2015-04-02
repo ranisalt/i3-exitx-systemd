@@ -423,7 +423,7 @@ gboolean main(int argc, char **argv)
 	gtk_box_pack_start(GTK_BOX(vbox2), image, FALSE, FALSE, 0);
 	g_object_unref(icon);
 
-	label = gtk_label_new(_("suspend"));
+	label = gtk_label_new(_("Suspend"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(vbox2), label, FALSE, FALSE, 0);
 
