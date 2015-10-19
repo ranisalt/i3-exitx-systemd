@@ -25,11 +25,13 @@
 #define COLOR			"#b6c4d7"
 #define BORDER			6
 
-#define	SHUTDOWN_CANCEL		0
-#define	SHUTDOWN_LOGOUT		1
-#define SHUTDOWN_SUSPEND	2
-#define SHUTDOWN_REBOOT		3
-#define SHUTDOWN_HALT		4
+enum {
+    SHUTDOWN_CANCEL = 0,
+    SHUTDOWN_LOGOUT,
+    SHUTDOWN_SUSPEND,
+    SHUTDOWN_REBOOT,
+    SHUTDOWN_HALT,
+};
 
 #define LOGOUT_CMD    "i3-msg exit"
 #define SUSPEND_CMD   "systemctl suspend"
